@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Tuto Java</string>
+    <string name="btn_main">OK</string>
+    <string name="btn2_main">الصفحة 2</string>
+
+    <!-- TextViews -->
+    <string name="tv_main_firstname">اسم:</string>
+    <string name="tv_main_lastname">اسم العائلة:</string>
+    <string name="tv_main_age">العمر:</string>
+
+    <!-- Placeholders -->
+    <string name="ph_firstname">اسم</string>
+    <string name="title_activity_calculator">CalculatorActivity</string>
+
+    <!-- Main2 -->
+    <string name="tv_main2">2nd Activity</string>
+    <string name="btn_main2">خلف</string>
+
+</resources>

@@ -1,19 +1,19 @@
 <resources>
     <string name="app_name">Tuto Java</string>
-    <string name="btn_main">OK</string>
+    <string name="btn_main">Valider</string>
     <string name="btn2_main">Page 2</string>
 
     <!-- TextViews -->
-    <string name="tv_main_firstname">Firstname :</string>
-    <string name="tv_main_lastname">Lastname :</string>
+    <string name="tv_main_firstname">Prénom :</string>
+    <string name="tv_main_lastname">Nom :</string>
     <string name="tv_main_age">Age :</string>
 
     <!-- Placeholders -->
-    <string name="ph_firstname">Firstname</string>
+    <string name="ph_firstname">Prénom</string>
     <string name="title_activity_calculator">CalculatorActivity</string>
 
     <!-- Main2 -->
-    <string name="tv_main2">2nd Activity</string>
-    <string name="btn_main2">Back</string>
+    <string name="tv_main2">2e Activité</string>
+    <string name="btn_main2">Retour</string>
 
 </resources>
