@@ -1,6 +1,11 @@
 package com.devid_academy.tutojava;
 
-public class Country {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
+public class Country implements Parcelable {
     private String name;
     private int resId;
 
@@ -15,6 +20,25 @@ public class Country {
         this.url = url;
     }
 
+    public Country(Parcel in) {
+        name = in.readString();
+        url = in.readString();
+    }
+
+    public Country(){}
+
+    public static final Creator<Country> CREATOR = new Creator<Country>() {
+        @Override
+        public Country createFromParcel(Parcel in) {
+            return new Country(in);
+        }
+
+        @Override
+        public Country[] newArray(int size) {
+            return new Country[size];
+        }
+    };
+
     public String getName() {
         return name;
     }
@@ -24,5 +48,16 @@ public class Country {
 
     public String getUrl() {
         return url;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel parcel, int i) {
+        parcel.writeString(name);
+        parcel.writeString(url);
     }
 }

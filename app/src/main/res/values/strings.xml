@@ -16,4 +16,9 @@
     <string name="tv_main2">2nd Activity</string>
     <string name="btn_main2">Back</string>
 
+    <!-- Create Country Activity-->
+    <string name="cca_button_validate">Validate</string>
+    <string name="cca_title">New country</string>
+    <string name="cca_ph_country_name">Name</string>
+    <string name="cca_ph_country_url">Url of picture</string>
 </resources>

@@ -1,9 +1,13 @@
 package com.devid_academy.tutojava;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,6 +16,8 @@ import java.util.ArrayList;
 
 public class RecyclerViewActivity extends AppCompatActivity implements ICountryInteraction {
 
+    private ActivityResultLauncher<Intent> activityResultLauncher;
+    private final int REQUEST_COUNTRY = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,14 +45,37 @@ public class RecyclerViewActivity extends AppCompatActivity implements ICountryI
         countryAdapter.setICountryInteraction(this);
         recyclerView.setAdapter(countryAdapter);
 
-        Button btnAdd = findViewById(R.id.btn_rva_add_country);
+        // Exercice pour rajouter le brésil en dur directement dans l'ArrayList et l'afficher
+
+       Button btnAdd = findViewById(R.id.btn_rva_add_country);
+//        btnAdd.setOnClickListener(v -> {
+//            countries.add(
+//                    new Country("Brazil", "https://cdn.countryflags.com/thumbs/brazil/flag-800.png")
+//            );
+//            countryAdapter.notifyItemInserted(countries.size()-1);
+//            countryAdapter.notifyDataSetChanged();
+//        });
+
+        activityResultLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == RESULT_OK) {
+                        Intent data = result.getData();
+                        if(data != null) {
+                            Country country = data.getParcelableExtra(CreateCountryActivity.KEY_INFO);
+                            countries.add(country);
+                            countryAdapter.notifyItemInserted(countries.size()-1);
+                        }
+
+                    }
+                }
+        );
+
         btnAdd.setOnClickListener(v -> {
-            countries.add(
-                    new Country("Brazil", "https://cdn.countryflags.com/thumbs/brazil/flag-800.png")
-            );
-            countryAdapter.notifyItemInserted(countries.size()-1);
-            countryAdapter.notifyDataSetChanged();
+            Intent intent = new Intent(RecyclerViewActivity.this, CreateCountryActivity.class);
+            activityResultLauncher.launch(intent);
         });
+
     }
 
     public void makeToast(String message ) {
