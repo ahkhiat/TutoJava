@@ -1,26 +1,27 @@
 package com.devid_academy.tutojava;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
+import com.squareup.picasso.Picasso;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class CreateCountryActivity extends AppCompatActivity {
 
     Button btnValidate;
     EditText inputCountryName;
     EditText inputUrl;
+    CircleImageView civPreview;
     public static final String KEY_INFO = "KEY_INFO";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,29 @@ public class CreateCountryActivity extends AppCompatActivity {
 
         inputCountryName = findViewById(R.id.cca_input_country_name);
         inputUrl = findViewById(R.id.cca_input_url);
+
+        civPreview = findViewById(R.id.civ_cca_preview);
+
+        inputUrl.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                String urlString = charSequence.toString().trim();
+
+                Picasso.get()
+                        .load(urlString)
+                        .into(civPreview);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
         btnValidate.setOnClickListener(v -> {
 
