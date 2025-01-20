@@ -3,5 +3,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="bg_blue">#33CEFF</color>
+    <color name="red">#FF0000</color>
+    <color name="green">#13B700</color>
+    <color name="pink">#F0FF65FC</color>
 
 </resources>

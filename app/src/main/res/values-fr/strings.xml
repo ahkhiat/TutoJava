@@ -22,4 +22,6 @@
     <string name="cca_ph_country_name">Nom</string>
     <string name="cca_ph_country_url">Url de l\'image</string>
 
+    <string name="tv_fg_act">Choisir un fragment à afficher </string>
+
 </resources>

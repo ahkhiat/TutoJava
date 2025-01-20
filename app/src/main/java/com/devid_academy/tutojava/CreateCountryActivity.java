@@ -35,29 +35,34 @@ public class CreateCountryActivity extends AppCompatActivity {
 
         civPreview = findViewById(R.id.civ_cca_preview);
 
-        inputUrl.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//        inputUrl.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+//
+//            @Override
+//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//                String urlString = charSequence.toString().trim();
+//
+//                Picasso.get()
+//                        .load(urlString)
+//                        .into(civPreview);
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable editable) {}
+//        });
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                String urlString = charSequence.toString().trim();
+        inputUrl.setOnFocusChangeListener((v, hasFocus) -> {
+            if(!hasFocus) {
+                String urlString = inputUrl.getText().toString().trim();
 
                 Picasso.get()
                         .load(urlString)
                         .into(civPreview);
             }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
         });
 
         btnValidate.setOnClickListener(v -> {
-
             String insertedCountryName = inputCountryName.getText().toString().trim();
             String insertedUrl = inputUrl.getText().toString().trim();
 
@@ -67,13 +72,8 @@ public class CreateCountryActivity extends AppCompatActivity {
                 Country country = new Country(insertedCountryName, insertedUrl);
                 returnIntent.putExtra(KEY_INFO, country);
             }
-
             setResult(RESULT_OK, returnIntent);
-
             finish();
         });
-
     }
-
-
 }

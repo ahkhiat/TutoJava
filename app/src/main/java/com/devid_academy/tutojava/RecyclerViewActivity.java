@@ -32,7 +32,6 @@ public class RecyclerViewActivity extends AppCompatActivity implements ICountryI
         countries.add(new Country("Mexique", R.drawable.mexico_flag_small));
         countries.add(new Country("Tunisie", R.drawable.tunisia_flag_small));
 
-
         RecyclerView recyclerView = findViewById(R.id.rv_country);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -40,10 +39,13 @@ public class RecyclerViewActivity extends AppCompatActivity implements ICountryI
         // recyclerView.setAdapter(new CountryAdapter(countries, this));
 
         // méthode 2
-        CountryAdapter countryAdapter = new CountryAdapter(countries);
+        CountryAdapter countryAdapter = new CountryAdapter();
+        countryAdapter.setCountries(countries);
         countryAdapter.setRva(this);
         countryAdapter.setICountryInteraction(this);
         recyclerView.setAdapter(countryAdapter);
+
+
 
         // Exercice pour rajouter le brésil en dur directement dans l'ArrayList et l'afficher
 
@@ -63,8 +65,8 @@ public class RecyclerViewActivity extends AppCompatActivity implements ICountryI
                         Intent data = result.getData();
                         if(data != null) {
                             Country country = data.getParcelableExtra(CreateCountryActivity.KEY_INFO);
-                            countries.add(country);
-                            countryAdapter.notifyItemInserted(countries.size()-1);
+                            countryAdapter.addCountry(country);
+                            recyclerView.scrollToPosition(countries.size()-1);
                         }
 
                     }

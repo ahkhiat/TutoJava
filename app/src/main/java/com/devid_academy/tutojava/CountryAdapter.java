@@ -16,9 +16,9 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryHolder> {
     private ICountryInteraction iCountryInteraction;
 
     private RecyclerViewActivity rva;
-    public CountryAdapter(ArrayList<Country> countries) {
+    public CountryAdapter() {
         super();
-        this.countries = countries;
+        this.countries = new ArrayList<>();
     }
 
     public void setRva(RecyclerViewActivity rva) {
@@ -72,6 +72,13 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryHolder> {
         return countries.size();
     }
 
+    public void setCountries(ArrayList<Country> countries) {
+        this.countries.clear();
+        this.countries.addAll(countries);
+    }
 
-
+    public void addCountry(Country country) {
+        countries.add(country);
+        notifyItemInserted(countries.size()-1);
+    }
 }
