@@ -27,5 +27,13 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="tv_fg_act">Choose a fragment to display </string>
+    <string name="buttonGreen">Green Fragment</string>
+    <string name="buttonPink">Pink Fragment</string>
+    <string name="fg_green_title">Green Fragment dynamic Title</string>
+    <string name="tv_fg_pink">Pink Fragment Static Title</string>
+    <string name="btn_fg_pink">Show Toast on Activity</string>
+    <string name="fg_pink_message">Message from pink fragment</string>
+
+
 
 </resources>

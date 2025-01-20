@@ -22,6 +22,14 @@
     <string name="cca_ph_country_name">Nom</string>
     <string name="cca_ph_country_url">Url de l\'image</string>
 
+    <!-- Exercices Fragments Verts et Rose-->
     <string name="tv_fg_act">Choisir un fragment à afficher </string>
+    <string name="buttonGreen">Fragment Vert</string>
+    <string name="buttonPink">Fragment Rose</string>
+    <string name="fg_green_title">Titre dynamique du fragment vert</string>
+    <string name="tv_fg_pink">Titre statique du fragment rose</string>
+    <string name="btn_fg_pink">Affichier Toast dans l\'Activity</string>
+    <string name="fg_pink_message">Message provenant du fragment rose</string>
+
 
 </resources>
